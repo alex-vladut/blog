@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 
-import Layout from "../components/Layout";
+import Layout from "../components/layout";
 
-import "./blogTemplate.css";
+import "./blog-template.css";
 
 export default function Template({ data }) {
   const post = data.markdownRemark;
