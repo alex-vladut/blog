@@ -38,14 +38,20 @@ export const NavSide = ({ close }) => {
   }, [handleKeyUp]);
   return (
     <>
-      <div className="overlay" onClick={close} role="button" tabIndex={0} />
+      <div
+        className="overlay"
+        onClick={close}
+        onKeyUp={handleKeyUp}
+        role="button"
+        tabIndex={0}
+      />
       <nav className="nav-side">
         <div className="nav-side-close">
           <BurgerMenu isOpen={true} toggle={close} />
         </div>
         <ul className="nav-side-list">
           {routes.map(({ name, url }) => (
-            <li className="nav-side-list-item">
+            <li className="nav-side-list-item" key={name}>
               <Link activeClassName="active" to={url}>
                 {name}
               </Link>

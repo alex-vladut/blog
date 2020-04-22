@@ -1,7 +1,15 @@
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1.5em;
+}
+
 .nav-list {
   list-style-type: none;
   display: flex;
-  justify-content: flex-end;
   margin: 1.5em 0;
 }
 

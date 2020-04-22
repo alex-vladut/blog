@@ -21,19 +21,17 @@ const Nav = () => {
   return (
     <>
       {open ? <NavSide close={handleToggle} /> : null}
-      <nav>
+      <nav className="nav">
         <ul className="nav-list">
           {routes.map(({ name, url }) => (
-            <li className="desktop-only">
+            <li className="desktop-only" key={name}>
               <Link activeClassName="active" to={url}>
                 {name}
               </Link>
             </li>
           ))}
-          <li>
-            <BurgerMenu isOpen={open} toggle={handleToggle} />
-          </li>
         </ul>
+        <BurgerMenu isOpen={open} toggle={handleToggle} />
       </nav>
     </>
   );
