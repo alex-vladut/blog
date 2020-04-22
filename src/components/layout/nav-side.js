@@ -1,17 +1,26 @@
 import React, { useEffect, useCallback } from "react";
 import { Link } from "gatsby";
 
+import { BurgerMenu } from "./burger-menu";
+
 import "./nav-side.css";
+
+const routes = [
+  { name: "Home", url: "/" },
+  { name: "About", url: "/about" },
+  { name: "Blog", url: "/blog" },
+  { name: "Contact", url: "/contact" },
+];
 
 export const NavSide = ({ close }) => {
   const handleKeyUp = useCallback(
-    e => {
+    (e) => {
       const keys = {
         27: () => {
           e.preventDefault();
           close();
           window.removeEventListener("keyup", handleKeyUp, false);
-        }
+        },
       };
 
       if (keys[e.keyCode]) {
@@ -30,30 +39,20 @@ export const NavSide = ({ close }) => {
   return (
     <>
       <div className="overlay" onClick={close} role="button" tabIndex={0} />
-      <div className="nav-side">
+      <nav className="nav-side">
+        <div className="nav-side-close">
+          <BurgerMenu isOpen={true} toggle={close} />
+        </div>
         <ul className="nav-side-list">
-          <li className="nav-side-list-item">
-            <Link activeClassName="active" to="/">
-              Home
-            </Link>
-          </li>
-          <li className="nav-side-list-item">
-            <Link activeClassName="active" to="/about">
-              About
-            </Link>
-          </li>
-          <li className="nav-side-list-item">
-            <Link activeClassName="active" to="/blog">
-              Blog
-            </Link>
-          </li>
-          <li className="nav-side-list-item">
-            <Link activeClassName="active" to="/contact">
-              Contact
-            </Link>
-          </li>
+          {routes.map(({ name, url }) => (
+            <li className="nav-side-list-item">
+              <Link activeClassName="active" to={url}>
+                {name}
+              </Link>
+            </li>
+          ))}
         </ul>
-      </div>
+      </nav>
     </>
   );
 };

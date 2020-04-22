@@ -1,15 +1,13 @@
-.container {
+.burgeer-container {
   display: inline-block;
-  z-index: 100;
   cursor: pointer;
   color: var(--primary-color);
-  margin: 0;
   background-color: transparent;
   outline: none;
   border: 0;
 }
 
-.container:hover {
+.burgeer-container:hover {
   color: var(--secondary-color);
 }
 

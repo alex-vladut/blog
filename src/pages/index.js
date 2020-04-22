@@ -6,9 +6,9 @@ import "./index.css";
 
 const Home = () => (
   <Layout>
-    <div className="background-image" />
-    <div className="home-header">
-      <h1 className="title">
+    <div className="home-background" />
+    <div>
+      <h1 className="home-title">
         <span className="has-secondary-color">Hello,</span> I'm
         <br /> Alex Vladut
       </h1>

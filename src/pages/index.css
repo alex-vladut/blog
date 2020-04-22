@@ -23,22 +23,17 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-h1.title {
+.has-secondary-color {
+  color: var(--secondary-color);
+}
+
+h1.home-title {
   font-size: 5rem;
   font-weight: normal;
   letter-spacing: -5px;
 }
 
-.has-secondary-color {
-  color: var(--secondary-color);
-}
-
-.home-header {
-  max-width: 1080px;
-  margin: 0 auto;
-}
-
-.background-image {
+.home-background {
   position: absolute;
   z-index: -1;
   top: 0;

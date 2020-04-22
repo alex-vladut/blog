@@ -1,13 +1,9 @@
-.main {
-  padding: 24px;
-  height: 100%;
-  color: #ffffff;
+.container {
+  max-width: 2000px;
+  margin: 0 auto;
 }
 
-.main h1 {
-  font-size: 5em;
-}
-
-.main p {
-  font-size: 2em;
+main {
+  max-width: 1080px;
+  margin: 0 auto;
 }

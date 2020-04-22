@@ -6,38 +6,34 @@ import { NavSide } from "./nav-side";
 
 import "./nav.css";
 
+const routes = [
+  { name: "Home", url: "/" },
+  { name: "About", url: "/about" },
+  { name: "Blog", url: "/blog" },
+  { name: "Contact", url: "/contact" },
+];
+
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
-    setOpen(prev => !prev);
+    setOpen((prev) => !prev);
   };
   return (
     <>
       {open ? <NavSide close={handleToggle} /> : null}
-      <nav className="nav">
+      <nav>
         <ul className="nav-list">
-          <li className="nav-list-item">
-            <Link activeClassName="active" to="/">
-              Home
-            </Link>
-          </li>
-          <li className="nav-list-item">
-            <Link activeClassName="active" to="/about">
-              About
-            </Link>
-          </li>
-          <li className="nav-list-item">
-            <Link activeClassName="active" to="/blog">
-              Blog
-            </Link>
-          </li>
-          <li className="nav-list-item">
-            <Link activeClassName="active" to="/contact">
-              Contact
-            </Link>
+          {routes.map(({ name, url }) => (
+            <li>
+              <Link activeClassName="active" to={url}>
+                {name}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <BurgerMenu isOpen={open} toggle={handleToggle} />
           </li>
         </ul>
-        <BurgerMenu isOpen={open} toggle={handleToggle} />
       </nav>
     </>
   );

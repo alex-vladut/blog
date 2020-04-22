@@ -3,7 +3,7 @@ import React from "react";
 import "./burger-menu.css";
 
 const getClasses = isOpen =>
-  (isOpen ? ["container", "change"] : ["container"]).join(" ");
+  (isOpen ? ["burgeer-container", "change"] : ["burgeer-container"]).join(" ");
 
 export const BurgerMenu = ({ isOpen, toggle }) => (
   <button className={getClasses(isOpen)} onClick={toggle}>

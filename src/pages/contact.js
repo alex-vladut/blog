@@ -8,15 +8,13 @@ const Contact = () => (
   <Layout>
     <div className="contact-background" />
     <div className="contact-content">
-      <div className="contact-address">
+      <div>
         <h2 className="contact-title">
           <span className="has-secondary-color">Cluj-Napoca,</span> Romania
         </h2>
-        <p className="contact-address">
-          166 Main Street, Beverly Hills, CA 90210
-        </p>
+        <p>22 Main Street, Cluj-Napoca, 40000</p>
       </div>
-      <div className="contact-form">
+      <form>
         <input type="text" name="name" placeholder="Name" />
         <input type="email" name="email" placeholder="Email" />
         <input type="text" name="subject" placeholder="Subject (Optional)" />
@@ -27,7 +25,7 @@ const Contact = () => (
           rows="6"
         />
         <button>Contact us</button>
-      </div>
+      </form>
     </div>
   </Layout>
 );

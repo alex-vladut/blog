@@ -5,8 +5,8 @@ import Nav from "./nav";
 import "./layout.css";
 
 export const Layout = ({ children }) => (
-  <div>
+  <div className="container">
     <Nav />
-    <main className="main">{children}</main>
+    <main>{children}</main>
   </div>
 );
