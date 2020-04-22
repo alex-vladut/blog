@@ -10,13 +10,13 @@ const routes = [
   { name: "Home", url: "/" },
   { name: "About", url: "/about" },
   { name: "Blog", url: "/blog" },
-  { name: "Contact", url: "/contact" },
+  { name: "Contact", url: "/contact" }
 ];
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
-    setOpen((prev) => !prev);
+    setOpen(prev => !prev);
   };
   return (
     <>
@@ -24,7 +24,7 @@ const Nav = () => {
       <nav>
         <ul className="nav-list">
           {routes.map(({ name, url }) => (
-            <li>
+            <li className="desktop-only">
               <Link activeClassName="active" to={url}>
                 {name}
               </Link>
