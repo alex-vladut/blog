@@ -4,11 +4,9 @@ import Nav from "./nav";
 
 import "./layout.css";
 
-const Layout = ({ children }) => (
-  <div className="layout">
+export const Layout = ({ children }) => (
+  <div>
     <Nav />
     <main className="main">{children}</main>
   </div>
 );
-
-export default Layout;

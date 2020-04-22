@@ -9,7 +9,7 @@ import "./nav.css";
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
-    setOpen((prev) => !prev);
+    setOpen(prev => !prev);
   };
   return (
     <>

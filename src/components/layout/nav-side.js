@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { Link } from "gatsby";
 
 import "./nav-side.css";
 
 export const NavSide = ({ close }) => {
+  const handleKeyUp = useCallback(
+    e => {
+      const keys = {
+        27: () => {
+          e.preventDefault();
+          close();
+          window.removeEventListener("keyup", handleKeyUp, false);
+        }
+      };
+
+      if (keys[e.keyCode]) {
+        keys[e.keyCode]();
+      }
+    },
+    [close]
+  );
+  useEffect(() => {
+    window.addEventListener("keyup", handleKeyUp, false);
+
+    return () => {
+      window.removeEventListener("keyup", handleKeyUp, false);
+    };
+  }, [handleKeyUp]);
   return (
     <>
-      <div
-        className="overlay"
-        onClick={close}
-        role="button"
-        tabIndex={0}
-      />
+      <div className="overlay" onClick={close} role="button" tabIndex={0} />
       <div className="nav-side">
         <ul className="nav-side-list">
           <li className="nav-side-list-item">
