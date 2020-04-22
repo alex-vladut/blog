@@ -7,7 +7,7 @@ import "./index.css";
 const Home = () => (
   <Layout>
     <div className="home-background" />
-    <div>
+    <div className="home-container">
       <h1 className="home-title">
         <span className="has-secondary-color">Hello,</span> I'm
         <br /> Alex Vladut

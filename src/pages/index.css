@@ -2,8 +2,7 @@
   box-sizing: border-box;
   --primary-color: white;
   --secondary-color: #c32865;
-  --primary-bg: #1c1c1c;
-  --secondary-bg: white;
+  --primary-bg-color: #1c1c1c;
 }
 
 *,
@@ -20,8 +19,8 @@ body {
 }
 
 body {
-  background-color: var(--primary-bg);
-  color: var(--secondary-bg);
+  background-color: var(--primary-bg-color);
+  color: var(--primary-color);
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -33,6 +32,11 @@ h1.home-title {
   font-size: 5rem;
   font-weight: normal;
   letter-spacing: -5px;
+  margin-top: 0;
+}
+
+.home-container {
+  min-height: calc(100vh - 7rem);
 }
 
 .home-background {
