@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
+
 import "./post.css";
 
-const Post = ({ title, author, date, description, path }) => (
+export const Post = ({ title, author, date, description, path }) => (
   <div className="post">
     <h3 className="post-title">{title}</h3>
     <p className="post-description">{description}</p>
@@ -12,5 +13,3 @@ const Post = ({ title, author, date, description, path }) => (
     <Link to={path}>Read more</Link>
   </div>
 );
-
-export default Post;

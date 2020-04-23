@@ -1,14 +1,15 @@
 .burgeer-container {
   display: inline-block;
   cursor: pointer;
-  color: var(--primary-color);
+  color: var(--color-1);
   background-color: transparent;
-  outline: none;
   border: 0;
+  outline: none;
 }
 
-.burgeer-container:hover {
-  color: var(--secondary-color);
+.burgeer-container:hover,
+.burgeer-container:focus {
+  color: var(--color-2);
 }
 
 .bar1,

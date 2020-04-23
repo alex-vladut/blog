@@ -8,12 +8,12 @@ import "./nav.css";
 
 const routes = [
   { name: "Home", url: "/" },
-  { name: "About", url: "/about" },
+  { name: "Resume", url: "/resume" },
   { name: "Blog", url: "/blog" },
   { name: "Contact", url: "/contact" }
 ];
 
-const Nav = () => {
+export const Nav = () => {
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
     setOpen(prev => !prev);
@@ -36,5 +36,3 @@ const Nav = () => {
     </>
   );
 };
-
-export default Nav;

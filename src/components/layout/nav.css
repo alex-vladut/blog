@@ -5,6 +5,9 @@
   display: flex;
   justify-content: flex-end;
   padding-right: 1.5em;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  z-index: 1;
 }
 
 .nav-list {
@@ -23,22 +26,21 @@
 
 .nav-list > li > a {
   display: block;
-  color: var(--primary-color);
+  color: var(--color-1);
   text-decoration: none;
   border-bottom: 2px transparent;
-  transition: border 0.1s linear;
   font-size: 1.5em;
 }
 
 .nav-list > li > a:hover,
 .nav-list > li > a:focus {
-  color: var(--secondary-color);
+  color: var(--color-2);
 }
 
 .nav-list > li > a:hover,
 .nav-list > li > a:focus,
 .nav-list > li > a.active {
-  border-bottom: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--color-2);
 }
 
 .desktop-only {

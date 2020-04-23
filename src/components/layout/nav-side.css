@@ -40,7 +40,7 @@
 .nav-side-list > li > a:hover,
 .nav-side-list > li > a:focus,
 .nav-side-list > li > a.active {
-  color: var(--primary-color);
+  color: var(--color-1);
 }
 
 .nav-side-close {
