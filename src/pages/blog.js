@@ -8,7 +8,7 @@ import { Post } from "../components/post";
 const Blog = ({ data }) => (
   <Layout>
     <h1>Blog</h1>
-    {data.allMarkdownRemark.edges.map((post) => {
+    {data.allMarkdownRemark.edges.map(post => {
       const { title, author, date, description, path } = post.node.frontmatter;
 
       return (
