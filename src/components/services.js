@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import {
   faLaptopCode,
   faMobileAlt,
   faCode
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import "./services.css";
+import './services.css';
 
 export const Services = () => (
   <div className="home-services">

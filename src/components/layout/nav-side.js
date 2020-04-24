@@ -1,15 +1,15 @@
-import React, { useEffect, useCallback } from "react";
-import { Link } from "gatsby";
+import React, { useEffect, useCallback } from 'react';
+import { Link } from 'gatsby';
 
-import { BurgerMenu } from "./burger-menu";
+import { BurgerMenu } from './burger-menu';
 
-import "./nav-side.css";
+import './nav-side.css';
 
 const routes = [
-  { name: "Home", url: "/" },
-  { name: "Resume", url: "/resume" },
-  { name: "Blog", url: "/blog" },
-  { name: "Contact", url: "/contact" }
+  { name: 'Home', url: '/' },
+  { name: 'Resume', url: '/resume' },
+  { name: 'Blog', url: '/blog' },
+  { name: 'Contact', url: '/contact' }
 ];
 
 export const NavSide = ({ close }) => {
@@ -19,7 +19,7 @@ export const NavSide = ({ close }) => {
         27: () => {
           e.preventDefault();
           close();
-          window.removeEventListener("keyup", handleKeyUp, false);
+          window.removeEventListener('keyup', handleKeyUp, false);
         }
       };
 
@@ -30,10 +30,10 @@ export const NavSide = ({ close }) => {
     [close]
   );
   useEffect(() => {
-    window.addEventListener("keyup", handleKeyUp, false);
+    window.addEventListener('keyup', handleKeyUp, false);
 
     return () => {
-      window.removeEventListener("keyup", handleKeyUp, false);
+      window.removeEventListener('keyup', handleKeyUp, false);
     };
   }, [handleKeyUp]);
   return (

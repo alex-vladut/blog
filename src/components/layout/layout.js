@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { Nav } from "./nav";
-import { Footer } from "./footer";
+import { Nav } from './nav';
+import { Footer } from './footer';
 
-import "./layout.css";
+import './layout.css';
 
 export const Layout = ({ children }) => (
   <>

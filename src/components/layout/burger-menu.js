@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import "./burger-menu.css";
+import './burger-menu.css';
 
 const getClasses = isOpen =>
-  (isOpen ? ["burgeer-container", "change"] : ["burgeer-container"]).join(" ");
+  (isOpen ? ['burgeer-container', 'change'] : ['burgeer-container']).join(' ');
 
 export const BurgerMenu = ({ isOpen, toggle }) => (
   <button className={getClasses(isOpen)} onClick={toggle}>

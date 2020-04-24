@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { graphql } from "gatsby";
+import { graphql } from 'gatsby';
 
-import { Layout } from "../components/layout";
-import { Post } from "../components/post";
+import { Layout } from '../components/layout';
+import { Post } from '../components/post';
 
 const Blog = ({ data }) => (
   <Layout>

@@ -1,9 +1,9 @@
 ---
-path: "/my-first-blog"
-date: "2020-01-01"
-title: "My First Blog"
-author: "Me"
-description: "This is my very first blog of 2020!"
+path: '/my-first-blog'
+date: '2020-01-01'
+title: 'My First Blog'
+author: 'Me'
+description: 'This is my very first blog of 2020!'
 ---
 
 Here is my main content

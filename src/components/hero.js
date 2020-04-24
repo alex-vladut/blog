@@ -1,8 +1,8 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 
-import "./hero.css";
+import './hero.css';
 
 export const Hero = () => (
   <div className="home-background">
@@ -14,11 +14,11 @@ export const Hero = () => (
       <div className="home-social-media">
         <a href="https://www.linkedin.com/in/alexandru-vladut/">
           <FontAwesomeIcon icon={faLinkedinIn} />
-          {" LinkedIn"}
+          {' LinkedIn'}
         </a>
         <a href="https://github.com/alex-vladut">
           <FontAwesomeIcon icon={faGithub} />
-          {" GitHub"}
+          {' GitHub'}
         </a>
       </div>
       <p>

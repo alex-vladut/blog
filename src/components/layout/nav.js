@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "gatsby";
+import React, { useState } from 'react';
+import { Link } from 'gatsby';
 
-import { BurgerMenu } from "./burger-menu";
-import { NavSide } from "./nav-side";
+import { BurgerMenu } from './burger-menu';
+import { NavSide } from './nav-side';
 
-import "./nav.css";
+import './nav.css';
 
 const routes = [
-  { name: "Home", url: "/" },
-  { name: "Resume", url: "/resume" },
-  { name: "Blog", url: "/blog" },
-  { name: "Contact", url: "/contact" }
+  { name: 'Home', url: '/' },
+  { name: 'Resume', url: '/resume' },
+  { name: 'Blog', url: '/blog' },
+  { name: 'Contact', url: '/contact' }
 ];
 
 export const Nav = () => {
