@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Button } from '../ui/button';
 import { Layout } from '../components/layout';
 
 import './contact.css';
@@ -15,16 +16,16 @@ const Contact = () => (
           <p>22 Main Street, Cluj-Napoca, 40000</p>
         </div>
         <form>
-          <input type="text" name="name" placeholder="Name" />
-          <input type="email" name="email" placeholder="Email" />
-          <input type="text" name="subject" placeholder="Subject (Optional)" />
+          <input type="text" name="name" placeholder="Name *" />
+          <input type="email" name="email" placeholder="Email *" />
+          <input type="text" name="subject" placeholder="Subject" />
           <textarea
-            placeholder="Message"
+            placeholder="Message *"
             name="your-message"
             cols="40"
             rows="6"
           />
-          <button>Contact us</button>
+          <Button>Contact us</Button>
         </form>
       </div>
     </div>

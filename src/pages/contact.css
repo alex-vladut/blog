@@ -72,29 +72,3 @@
   background-color: #2f2f2f;
   box-shadow: 0 0 2.08333rem rgba(0, 0, 0, 0.5);
 }
-
-.contact-content > form button {
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: 0.025em;
-  line-height: 1.5;
-  text-transform: none;
-  color: var(--color-1);
-  background-color: var(--color-2);
-  padding: 1em 2em;
-  display: inline-flex;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
-  text-decoration: none;
-  border: none;
-  outline: 0;
-  box-shadow: none;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 2.08333rem rgba(0, 0, 0, 0.5);
-  border: 1px solid #2f2f2f;
-}

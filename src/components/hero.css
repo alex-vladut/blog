@@ -6,17 +6,26 @@ h1.home-title {
 }
 
 .home-container {
+  position: relative;
   min-height: 100vh;
   max-width: var(--max-content-width);
   margin: 0 auto;
-  padding-top: 5em;
+  padding: 5em 1em;
+}
+
+.home-container > p {
+  width: 70%;
+  font-size: 1.5rem;
+  color: var(--color-1);
+  text-shadow: 1px 1px 2px black, 0 0 2em var(--color-4),
+    0 0 0.3em var(--color-4);
 }
 
 .home-background {
   width: 100%;
   height: 100%;
   transform: scale(1);
-  background-image: url("../images/background.jpg");
+  background-image: url('../images/background.jpg');
   background-position: center;
   background-size: cover;
 }
@@ -36,4 +45,36 @@ h1.home-title {
 .home-social-media > a:focus,
 .home-social-media > a:active {
   color: var(--color-2);
+}
+
+.home-container .cta {
+  margin-top: 2rem;
+}
+
+.button-go-down {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  padding-bottom: 1em;
+  width: 100%;
+}
+
+.button-go-down a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.button-go-down a:hover,
+.button-go-down a:focus,
+.button-go-down a:active {
+  color: var(--color-2);
+}
+
+@media only screen and (max-width: 800px) {
+  .home-container > p {
+    width: 100%;
+  }
 }

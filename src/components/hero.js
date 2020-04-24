@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'gatsby';
 
 import './hero.css';
 
@@ -22,11 +24,29 @@ export const Hero = () => (
         </a>
       </div>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dignissimos
-        aut consequuntur aspernatur corrupti ratione, odit similique tenetur
-        accusantium, est nostrum esse minus iure voluptatum nihil cumque
-        blanditiis non? Odit.
+        We bring your ideas to life by designing, implementing and deploying
+        your fully
+        <strong className="has-secondary-color">
+          <i> responsive</i>
+        </strong>
+        , highly
+        <strong className="has-secondary-color">
+          <i> performant </i>
+        </strong>
+        and
+        <strong className="has-secondary-color">
+          <i> secure </i>
+        </strong>
+        web application.
       </p>
+      <Link className="btn cta" to="/contact">
+        Contact us
+      </Link>
+      <div className="button-go-down">
+        <a href="#services">
+          <FontAwesomeIcon icon={faChevronDown} />
+        </a>
+      </div>
     </div>
   </div>
 );

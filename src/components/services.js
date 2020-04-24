@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './services.css';
 
 export const Services = () => (
-  <div className="home-services">
+  <div id="services" className="home-services">
     <span>services</span>
     <h2>
       <span className="has-secondary-color">Our</span> Services
