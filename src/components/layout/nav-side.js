@@ -7,7 +7,6 @@ import './nav-side.css';
 
 const routes = [
   { name: 'Home', url: '/' },
-  { name: 'Resume', url: '/resume' },
   { name: 'Blog', url: '/blog' },
   { name: 'Contact', url: '/contact' }
 ];
