@@ -2,7 +2,7 @@
   position: relative;
   max-width: var(--max-content-width);
   margin: 0 auto;
-  padding: 10em 1em;
+  padding: 1em;
 }
 
 .home-services > span {
@@ -23,9 +23,9 @@
 }
 
 .home-services > h2 {
-  line-height: 1.33333em;
+  line-height: 1.5em;
   letter-spacing: -0.025px;
-  padding: 0;
+  padding: 1.5em 0;
   margin: 0;
   font-size: 3.371rem;
   text-transform: none;
@@ -33,13 +33,11 @@
 }
 
 .home-services-items {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .home-services-items > div {
-  flex: 1;
   min-width: 300px;
   min-height: 1px;
   padding: 0 40px 20px 10px;
@@ -100,4 +98,11 @@ p a:active {
   outline: 0;
   text-decoration: none;
   color: var(--color-2);
+}
+
+
+@media only screen and (min-width: 700px) {
+  .home-services-items {
+    grid-template-columns: 1fr 1fr;
+  }
 }
