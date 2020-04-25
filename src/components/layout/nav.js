@@ -9,13 +9,13 @@ import './nav.css';
 const routes = [
   { name: 'Home', url: '/' },
   { name: 'Blog', url: '/blog' },
-  { name: 'Contact', url: '/contact' }
+  { name: 'Contact', url: '/contact' },
 ];
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
-    setOpen(prev => !prev);
+    setOpen((prev) => !prev);
   };
   return (
     <>

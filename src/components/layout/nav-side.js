@@ -8,18 +8,18 @@ import './nav-side.css';
 const routes = [
   { name: 'Home', url: '/' },
   { name: 'Blog', url: '/blog' },
-  { name: 'Contact', url: '/contact' }
+  { name: 'Contact', url: '/contact' },
 ];
 
 export const NavSide = ({ close }) => {
   const handleKeyUp = useCallback(
-    e => {
+    (e) => {
       const keys = {
         27: () => {
           e.preventDefault();
           close();
           window.removeEventListener('keyup', handleKeyUp, false);
-        }
+        },
       };
 
       if (keys[e.keyCode]) {
