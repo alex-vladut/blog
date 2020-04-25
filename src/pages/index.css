@@ -6,6 +6,8 @@
   --color-4: #8888;
   --max-width: 2000px;
   --max-content-width: 1080px;
+  --z-nav-footer: 100;
+  --z-nav-side: 200;
 }
 
 *,

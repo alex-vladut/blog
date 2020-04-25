@@ -9,7 +9,7 @@
 
 .contact-content {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   padding: 10em 1em;
   max-width: var(--max-content-width);
   margin: 0 auto;
@@ -17,7 +17,6 @@
 
 .contact-content > * {
   flex: 1;
-  min-width: 400px;
   margin: 0.5em;
 }
 
@@ -71,4 +70,10 @@
   outline: 0;
   background-color: #2f2f2f;
   box-shadow: 0 0 2.08333rem rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (min-width: 900px) {
+  .contact-content {
+    flex-direction: row;
+  }
 }
