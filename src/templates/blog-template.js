@@ -1,38 +1,39 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { css } from '@emotion/core';
 
 import { Layout } from '../components/layout';
+import { ReadLink } from '../components/read-link';
 
 import './blog-template.css';
 
-export default function Template({ data }) {
-  const post = data.markdownRemark;
-  const { title, author, date } = post.frontmatter;
+const BlogTemplate = ({ data: { mdx: post } }) => (
+  <Layout>
+    <h1>{post.frontmatter.title}</h1>
+    <p
+      css={css`
+        font-size: 0.75rem;
+      `}
+    >
+      Posted by {post.frontmatter.author} on {post.frontmatter.date}
+    </p>
+    <MDXRenderer>{post.body}</MDXRenderer>
+    <ReadLink to="/blog">&larr; back to all posts</ReadLink>
+  </Layout>
+);
 
-  return (
-    <Layout>
-      <div className="blogTemplate">
-        <Link to="/blog">Back to blogs</Link>
-        <h1 className="blogTemplate-title">{title}</h1>
-        <p className="blogTemplate-posted-by">
-          Posted by {author} on {date}
-        </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      </div>
-    </Layout>
-  );
-}
+export default BlogTemplate;
 
 export const postQuery = graphql`
-  query BlogPost($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query($slug: String!) {
+    mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
+        title
         author
         date
-        title
-        path
       }
-      html
+      body
     }
   }
 `;

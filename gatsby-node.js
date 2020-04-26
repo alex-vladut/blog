@@ -1,29 +1,31 @@
 const path = require('path');
 
-exports.createPages = ({ actions: { createPage }, graphql }) => {
-  const postTemplate = path.resolve('src/templates/blog-template.js');
-
-  return graphql(`
-    {
-      allMarkdownRemark {
-        edges {
-          node {
-            frontmatter {
-              path
-            }
+exports.createPages = async ({ actions, graphql, reporter }) => {
+  const result = await graphql(`
+    query {
+      allMdx {
+        nodes {
+          frontmatter {
+            slug
           }
         }
       }
     }
-  `).then((res) => {
-    if (res.errors) {
-      return Promise.reject(res.errors);
-    }
-    res.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      createPage({
-        path: node.frontmatter.path,
-        component: postTemplate,
-      });
+  `);
+
+  if (result.errors) {
+    reporter.panic('failed to create posts', result.errors);
+  }
+
+  const posts = result.data.allMdx.nodes;
+
+  posts.forEach((post) => {
+    actions.createPage({
+      path: post.frontmatter.slug,
+      component: require.resolve('./src/templates/blog-template.js'),
+      context: {
+        slug: post.frontmatter.slug,
+      },
     });
   });
 };
