@@ -25,14 +25,6 @@ module.exports = {
         display: `minimal-ui`,
       },
     },
-    `gatsby-transformer-remark`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages`,
-      },
-    },
     'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-plugin-mdx',
