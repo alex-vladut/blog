@@ -42,6 +42,31 @@ export const Layout = ({ children }) => {
             color: var(--color-1);
             font-family: Helvetica, Arial, sans-serif;
           }
+
+          strong {
+            color: var(--color-2);
+          }
+
+          .has-secondary-color {
+            color: var(--color-2);
+          }
+
+          .has-line-before {
+            position: relative;
+          }
+
+          .has-line-before::before {
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            width: 100vw;
+            margin-right: 2rem;
+            content: '';
+            transition: transform 1s ease-out;
+            transform: scaleX(0);
+            border-top: 1px solid var(--color-1);
+            transform: scaleX(1);
+          }
         `}
       />
       <Helmet>
