@@ -44,7 +44,12 @@ const Item = (props) => (
 
 const DownloadResume = () => (
   <p>
-    <a className="has-line-before" href="#download">
+    <a
+      className="has-line-before"
+      href="/resume.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       Download Resume
     </a>
   </p>
