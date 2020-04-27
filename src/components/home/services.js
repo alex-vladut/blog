@@ -6,23 +6,56 @@ import {
   faLaptopCode,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+
+import { SideText } from '../side-text';
+import { SectionTitle } from '../section-title';
 
 import './services.css';
+
+const Main = styled('div')`
+  position: relative;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 1em;
+`;
 
 const Item = (props) => (
   <div>
     <FontAwesomeIcon className="icon has-secondary-color" icon={props.icon} />
-    <h4 className="title">{props.title}</h4>
+    <h4
+      css={css`
+        font-size: 1.5rem;
+        margin: 0 0 2rem;
+        text-transform: uppercase;
+        color: var(--color-1);
+        font-weight: 600;
+        letter-spacing: 0.025em;
+        line-height: 1.25;
+      `}
+      className="title"
+    >
+      {props.title}
+    </h4>
     <p className="content">{props.children}</p>
   </div>
 );
 
+const DownloadResume = () => (
+  <p>
+    <a className="has-line-before" href="#download">
+      Download Resume
+    </a>
+  </p>
+);
+
 export const Services = () => (
-  <div id="services" className="home-services">
-    <span>services</span>
-    <h2>
+  <Main id="services">
+    <SideText>services</SideText>
+    <SectionTitle>
       <span className="has-secondary-color">My</span> Services
-    </h2>
+    </SectionTitle>
     <section className="home-services-items">
       <Item icon={faLaptopCode} title="Full-Stack Development">
         I have extensive experience with developing web applications from
@@ -55,10 +88,6 @@ export const Services = () => (
         to the minimum.
       </Item>
     </section>
-    <p>
-      <a className="has-line-before" href="#download">
-        Download Resume
-      </a>
-    </p>
-  </div>
+    <DownloadResume />
+  </Main>
 );

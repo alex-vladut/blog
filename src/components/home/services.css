@@ -1,0 +1,43 @@
+.home-services-items {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.home-services-items > div {
+  min-width: 300px;
+  min-height: 1px;
+  padding: 0 40px 20px 10px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-services-items > div:last-child {
+  padding-right: 0;
+}
+
+.home-services-items .icon {
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: 2.5rem;
+}
+
+.home-services-items .icon > svg {
+  width: 1em;
+  height: 1em;
+}
+
+.home-services-items .content {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  line-height: 1.9428;
+  text-transform: none;
+  color: var(--color-4);
+}
+
+@media only screen and (min-width: 700px) {
+  .home-services-items {
+    grid-template-columns: 1fr 1fr;
+  }
+}

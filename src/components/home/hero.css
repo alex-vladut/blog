@@ -23,6 +23,7 @@ h1.home-title {
 
 .home-container .cta {
   margin-top: 2rem;
+  color: var(--color-1);
 }
 
 .button-go-down {

@@ -47,6 +47,22 @@ export const Layout = ({ children }) => {
             color: var(--color-2);
           }
 
+          a {
+            box-shadow: none;
+            text-decoration: none;
+            color: inherit;
+          }
+
+          a:hover,
+          a:focus,
+          a:active {
+            outline: 0;
+          }
+
+          a:hover {
+            color: var(--color-2);
+          }
+
           .has-secondary-color {
             color: var(--color-2);
           }
