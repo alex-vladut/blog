@@ -17,7 +17,7 @@ export const Layout = ({ children }) => {
             --color-1: white;
             --color-2: #c32865;
             --color-3: #1c1c1c;
-            --color-4: #8888;
+            --color-4: #9d9d9d;
             --max-width: 2000px;
             --max-content-width: 1080px;
             --z-nav-footer: 100;
