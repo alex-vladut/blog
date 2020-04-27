@@ -23,9 +23,7 @@ const SocialLink = styled('a')`
   text-decoration: none;
   color: inherit;
 
-  &:hover,
-  &:focus,
-  &:active {
+  &:hover {
     color: var(--color-2);
   }
 `;
@@ -55,17 +53,25 @@ export const Hero = () => {
             display: flex;
           `}
         >
-          <SocialLink href="https://www.linkedin.com/in/alexandru-vladut/">
+          <SocialLink
+            href="https://www.linkedin.com/in/alexandru-vladut/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faLinkedinIn} />
             {' LinkedIn'}
           </SocialLink>
-          <SocialLink href="https://github.com/alex-vladut">
+          <SocialLink
+            href="https://github.com/alex-vladut"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faGithub} />
             {' GitHub'}
           </SocialLink>
         </div>
         <p>
-          We bring your ideas to life by designing, implementing and deploying
+          I bring your ideas to life by designing, implementing and deploying
           your fully
           <strong>
             <i> responsive</i>

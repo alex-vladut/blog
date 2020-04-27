@@ -85,21 +85,20 @@
   text-decoration: none;
 }
 
-p a {
+.home-services > p a {
   margin-left: 10px;
   color: inherit;
   transition: all 0.3s ease-out;
   background-color: transparent;
 }
 
-p a:hover,
-p a:focus,
-p a:active {
+.home-services > p a:hover,
+.home-services > p a:focus,
+.home-services > p a:active {
   outline: 0;
   text-decoration: none;
   color: var(--color-2);
 }
-
 
 @media only screen and (min-width: 700px) {
   .home-services-items {
