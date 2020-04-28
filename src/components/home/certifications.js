@@ -1,6 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { faJava, faAws } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { SideText } from '../side-text';
 import { SectionTitle } from '../section-title';
@@ -12,7 +14,7 @@ const Main = styled('div')`
   padding: 1em;
 `;
 
-const Item = ({ title, date, children }) => (
+const Item = ({ icon, title, date, children }) => (
   <div
     css={css`
       padding-top: 3rem;
@@ -29,7 +31,10 @@ const Item = ({ title, date, children }) => (
         color: #fff;
       `}
     >
-      {title}
+      <span>
+        <FontAwesomeIcon icon={icon} />
+      </span>
+      &nbsp;{title}
     </h5>
     <span
       css={css`
@@ -63,7 +68,11 @@ export const Certifications = () => {
         <span className="has-secondary-color">My</span> Certifications
       </SectionTitle>
       <section>
-        <Item title="AWS Certified Security - Specialty" date="Issued Aug 2018">
+        <Item
+          icon={faAws}
+          title="AWS Certified Security - Specialty"
+          date="Issued Aug 2018"
+        >
           The certification proves that the candidate has an understanding of
           specialized data classifications and AWS data protection mechanisms,
           data encryption methods and AWS mechanisms to implement them and a
@@ -71,6 +80,7 @@ export const Certifications = () => {
           provide a secure production environment.
         </Item>
         <Item
+          icon={faAws}
           title="AWS Certified SysOps Administrator - Associate"
           date="Issued Jun 2018"
         >
@@ -81,6 +91,7 @@ export const Certifications = () => {
           use of AWS operational best practices.
         </Item>
         <Item
+          icon={faAws}
           title="AWS Certified Developer - Associate"
           date="Issued Jun 2018"
         >
@@ -91,6 +102,7 @@ export const Certifications = () => {
           AWS.
         </Item>
         <Item
+          icon={faAws}
           title="AWS Certified Solutions Architect - Associate"
           date="Issued Apr 2018"
         >
@@ -100,13 +112,18 @@ export const Certifications = () => {
           guidance based on best practices to the organization throughout the
           life cycle of the project.
         </Item>
-        <Item title="AWS Certified Cloud Practitioner" date="Issued Apr 2018">
+        <Item
+          icon={faAws}
+          title="AWS Certified Cloud Practitioner"
+          date="Issued Apr 2018"
+        >
           The AWS Certified Cloud Practitioner examination is intended for
           individuals who have the knowledge and skills necessary to effectively
           demonstrate an overall understanding of the AWS Cloud, independent of
           specific technical roles addressed by other AWS Certifications.
         </Item>
         <Item
+          icon={faJava}
           title="Oracle Certified Associate, Java SE 8 Programmer"
           date="Issued Dec 2016"
         >
