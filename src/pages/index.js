@@ -1,15 +1,19 @@
 import React from 'react';
 
 import { Layout } from '../components/layout';
-import { Hero } from '../components/home/hero';
-import { Services } from '../components/home/services';
-import { Skills } from '../components/home/skills';
-import { Certifications } from '../components/home/certifications';
+import {
+  Hero,
+  Services,
+  Skills,
+  Projects,
+  Certifications,
+} from '../components/home';
 
 const Home = () => (
   <Layout>
     <Hero />
     <Services />
+    <Projects />
     <Skills />
     <Certifications />
   </Layout>

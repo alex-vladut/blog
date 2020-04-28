@@ -18,7 +18,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { SideText } from '../side-text';
 import { SectionTitle } from '../section-title';
 
 const Main = styled('div')`
@@ -48,7 +47,6 @@ const Item = ({ icon, name }) => {
 export const Skills = () => {
   return (
     <Main>
-      <SideText>skills</SideText>
       <SectionTitle>
         <span className="has-secondary-color">My</span> Skills
       </SectionTitle>
