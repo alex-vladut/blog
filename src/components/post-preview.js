@@ -5,15 +5,16 @@ import Image from 'gatsby-image';
 
 import { ReadLink } from './read-link';
 
-export const Post = ({ post }) => (
+export const PostPreview = ({ post }) => (
   <article
     css={css`
-      border-bottom: 1px solid #ddd;
       display: flex;
-      margin-top: 0;
-      padding-bottom: 1rem;
-      :first-of-type {
-        margin-top: 1rem;
+      margin-top: 2rem;
+      padding: 1em;
+      background-color: #2222;
+      box-shadow: 0px 1px 15px 1px var(--color-1);
+      :last-of-type {
+        margin-bottom: 2rem;
       }
     `}
   >
@@ -21,7 +22,10 @@ export const Post = ({ post }) => (
       to={post.slug}
       css={css`
         margin: 1rem 1rem 0 0;
-        width: 100px;
+        width: 10rem;
+        height: 10rem;
+        position: relative;
+        overflow: hidden;
       `}
     >
       <Image

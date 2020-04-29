@@ -1,0 +1,146 @@
+---
+slug: 'behaviour-driven-development'
+date: '2016-09-15'
+title: 'Behaviour Driven Development'
+author: 'Alex Vladut'
+description: 'A short introduction into Behaviour Driven Development practices'
+image: images/sara-riano-hello.jpg
+---
+
+**Behaviour Driven Developmen** (BDD) was first introduced by Dan North as a way to explain Test Driven Development to some customers who needed to apply TDD in their project (see [1] for details on where BDD started from). It is a set of collaboration practices designed for helping to build the right software and provide real value for the users (in contrast to his better-known brother, Test Driven Development, whose main goal is building the software right).
+BDD proposes an approach for minimizing the inherent misunderstanding  arisen when the information is passed from a stage to another stage of the software development process (from client to business analysts, then to programmers and testers). It is accomplished by defining real examples as a result of the collaboration of all stakeholders involved in the project.
+BDD is not an integral software development methodology in its own (is not trying to address all the areas of this domain), so it should be supported by other methodologies, like Agile, Test Drive Development or Domain Driven Development.
+
+> "*BDD practitioners use conversations around concrete examples of system behaviour
+> to help understand how features will provide value to the business. BDD encourages
+> business analysts, software developers, and testers to collaborate more closely by
+> enabling them to express requirements in a more testable way, in a form that both the
+> development team and business stakeholders can easily understand. BDD tools can
+> help turn these requirements into automated tests that help guide the developer, verify
+> the feature, and document what the application does.*" BDD in Action [2]
+
+## What are the main benefits provided by BDD?
+
+I selected three benefits provided by applying BDD practises, as I think these are the most important points to be taken into account when considering the adoption of BDD in a project:
+### Shared understanding of the project's functionalities across all team members
+*All team members are involved in the development of a new feature right from the beginning. Business analysts, developers and testers are collaborating with the users in order to understand what is the business value added by the feature in the project and what are the details involved for implementing the new feature. As a result of the collaboration, a set of examples are defined in a semi-structured format. These examples will form the acceptance criteria for the feature.*
+
+### Keep project documentation up to date
+*Most of the documentation you find in a project is outdated, as the focus is more on adding new functionalities than to update the documentation according to the last version of the code. It would require a lot of discipline from team members' part to keep track of every code change, and even if this would be possible it's not guaranteed that the specifications are describing how the application is supposed to work, rather than how it is actually working. In order to overcome this issue, BDD proposes to translate the examples agreed by the team into automated tests (or executable specifications, as they are often named) using some specialized tools, such as JBehave and Cucumber. These tests are providing a live documentation for the actual version of the code. In this way, there is no possibility to have an outdated version of the specification: when either the examples or the code is changed, the tests will fail providing a feedback that something should be updated.*
+
+### Prove the implementation is correct
+*Given the fact that the examples describing a feature are automated, by simply running the tests it can be demonstrated that the code is doing exactly what the users are expecting it to do. The results of the test executions could be visualised in a reporting format (many tools have the capability of generating reports in HTML format) which provide useful information about the features that are completed or in progress. Also, the examples could be easily analysed by non-technical people.*
+
+## The general process of BDD
+
+In this section I'll try to give you a basic understanding of the BDD process by following an real world example. It is not going to be a complete example and if you need to dig deeper into this subject, please refer to other tutorials on BDD you can easily find on the Internet.
+As a high level description, BDD consists of the following steps:
+
+**1. Define the business goals to be accomplished by the application you are going to build**
+
+This step is done by the customer himself (or the one who needs the application), as he knows in which way the application will help its users. At this stage the stakeholders are trying to identify the Whys or Whats of the project (Why do you need to build it? or What are you trying to accomplish through this application?) which will support finding the Hows at a later stage (How are you going to meet your customer's expectations?).
+For example, one such a goal for an online shop application could be:
+Provide the users the easiest way possible for reaching the products they need.
+
+**2. Find the most appropriate features that would help your application accomplish the proposed business goals**
+
+For every business goal defined at the previous step, a set of features will be identified in order to accomplish those goals. This should be done as a collaboration between both technical and non-technical team members. A feature meeting the proposed goal could be:
+
+```
+In order to find the products I need in an easy way
+As a user
+I want to be able to search the products by category
+```
+
+The BDD practitioners recommend putting the business goal as the first statement in a feature description in order to make clear what is needed to be accomplished.
+Neither this step nor the previous one is a one time job. Due to many reasons it's possible that the business goals are changing or during the implementation you find some better ways to accomplish the same goals.
+
+**3. Select one feature at a time and define some relevant examples in Gherkin format that would define how it should work**
+
+In order to understand better what needs to be implemented for a feature, the team members will specify some examples of real use cases. These examples will form the acceptance tests for the feature and will guide the implementation.
+For specifying the examples a semi-formal format will be used, for example:
+```
+Given the categories "Peripheral devices" and "Connectors" are created
+And the following products exist in the system:
+```
+|Name       |Description           |Category          |
+|-----------|----------------------|------------------|
+|USB        |USB cable             |Connectors        |
+|Mouse      |Mouse wireless     |Peripheral devices   |
+|Keyboard   |Keyboard wireless|Peripheral devices|
+|HDMI       |HDMI cable          |Connectors            |
+```
+When a user searches all the products in the "Peripheral devices" category
+Then the following products are returned: 
+```
+|Name      |Description        |
+|----------|-------------------|
+|Mouse     |Mouse wireless     |
+|Keyboard|Keyboard wireless|
+
+This Given-When-Then format is called Gherkin and offers a simple and expressive way of specifying an example. Also, this format could easily be translated into automated tests.
+
+**4. Start the implementation by automating the examples. Apply TDD at the feature level and find the relevant application components**
+
+For showing how the previous example is translated into an automated test I will use JBehave, which is a Java framework for BDD. JBehave matches a statement from the example (or scenario, in JBehave lingo) and calls a method corresponding to it, where the actual test steps are implemented. JBehave recognizes many keywords, such as Given, When, Then, And and But and could be integrated with different other testing tools in order to test your application at different levels (for example, you can use Selenium for testing the interaction with the web UI).
+As an example, here is a part of a test class which automates the when statement from the scenario:
+
+```java
+     List<Product> products = null;
+
+    @When("a user searches all the products in the \"$categoryName\" category")
+    public void whenAUserSearchesAllTheProductsInACategory(
+                      @Named("categoryName")final String categoryName){
+        products = productService.searchByCategory(categoryName);
+    }
+```
+
+As you can observe from the example, the matching is done on the whole statement. The category name was parametrized (using a $ before the parameter name in the statement) which allows me to change its value as needed or provide a set of values for which I'm expecting the same behaviour.
+The first iteration will result in a failing test, but it will guide us in implementing the functionality as expected. After executing these tests an execution report could be generated in a human readable format. Many teams have automated the deployment of these reports in order to make them accessible for all stakeholders in a fashionable way. The reports are providing many useful details, including information about the progress on implementing a feature, features which are still waiting to be implemented and features which have been broken by the latest code changes. 
+
+**5. For each component apply TDD for defining its interface and behaviour**
+
+At the unit test level, BDD recommends writing low level specifications (in contrast with the high level specifications - acceptance tests-, which are accessible by non-developers too), for helping the developers to understand what is the role of the corresponding tested class. It is recommended that all unit tests start with the word should followed by the expected action.
+
+```java
+    @Test
+    public void shouldReturnAllProductsForCategory_withValidCategoryName(){
+        //Given
+        final String categoryName = randomCategoryName();
+        final List<Product> products = randomListOfProducts();
+        BDDMockito.given(productRepositoryMock
+              .findByCategory(categoryName ))
+              .willReturn(products );
+        
+        //When
+        final List<Product> result = productService.searchByCategory(categoryName);
+        
+        //Then
+        MatcherAssert.assertThat(result, Matchers.equalTo(products));
+    }
+```
+
+For this unit test I used the testing libraries BDDMockito (an adapter of Mockito mocking library which lets you define the mocks in a BDD style) and Hamcrest (which is a more human readable assertion library). The same could also be accomplished with basic JUnit tests, just by separating the test according to the Given-When-Then statements.
+
+After completing these steps you should have some automated examples and a feature working as expected.
+How are we applying BDD in a project?
+
+As usually, the theory is not always applied exactly in practice. It needs to be adapted to your project's requirements. In the next lines I'll try to give you an idea of how BDD fits into our development process.
+The development of a new feature starts with the product owner coming with an informal description of the functionality that needs to be implemented. This document is meant to be just a starting point so that all team members have a basic understanding on what needs to be implemented and, more important, why is it going to be implemented.
+All team members take part to a meeting where the feature is discussed in more detail. As a prerequisite for this meeting, every member should read the specification in order to identify possible constraints and areas that need more explanations. During this meeting some Gherkin examples are sketched and the team should now have a good understanding of what needs to be implemented and in which way is it going to help the users.
+After the meeting, the testers will define some relevant examples for this feature. The scenarios are defined in a story file which will be translated in automated tests at a later time. All team members are collaborating around these examples in order to refine them and make sure they are catching the most important use cases of the new functionality. The collaboration is done through a Pull Request opened in Github and all the members involved in developing this feature commenting on it.
+At this step the implementation can start. As the implementation evolves, some of the examples are translated into automated tests. Only one or two happy path examples will be automated at the end of he first iteration of the implementation.
+The feature is canary released and if the stakeholders are satisfied with the implementation and the feature proved to be stable being in execution for few weeks, then the rest of the examples are automated too and the feature is considered done. Otherwise, changes in implementation and scenarios could occur.
+
+## Conclusions
+
+We have seen in this article that BDD offers a set of practices for delivering the right software, as a result of the collaboration of all team members. The main benefits of applying BDD in your project include: all team members have the same understanding of the project's functionality; easier integration in the project for new members; BDD offers a way for tracking the progress and demonstrating that the implementation is correct; the documentation always reflects the current state of the code.
+Also, an example has been given for how BDD is applied for developing a new feature. As these practices are more like guidelines, I gave a short description for how BDD practices are applied in a real project.
+
+Even if you think this is an interesting approach for software development and would like to use BDD in your project, I would recommend doing a thoroughly analysis before taking a decision. Firstly you have to identify the problems you are trying to address and if some of these problems match the ones detailed in this article, BDD could be considered an option. But that's not enough, because BDD has some requirements in order to be applied correctly. For example, if your project doesn't allow a frequent communication with your customers you won't be able to get the best out of this approach. Also, if your requirements are simple enough and everybody has a good understanding of what needs to be implemented, it would be a waste of time to define and automate some examples. As a conclusion, as it is always the case, you should carefully choose the right tools that can help you in achieving your goals.
+
+References
+
+[1](https://dannorth.net/introducing-bdd/)
+[2](https://www.manning.com/books/bdd-in-action)
+[3](https://books.gojko.net/specification-by-example/)
