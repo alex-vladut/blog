@@ -1,5 +1,16 @@
-type Todo @model {
+# AppSync GraphQL fails if no model is defined
+type Todo @model(mutations: null, queries: { get: "getTodo" }, subscriptions: null) {
   id: ID!
+}
+
+input ContactUsInput {
   name: String!
-  description: String
+  email: String!
+  subject: String
+  message: String!
+}
+
+type Mutation {
+  sendMessage(input: ContactUsInput!): String
+    @function(name: "contact-us-${env}")
 }
