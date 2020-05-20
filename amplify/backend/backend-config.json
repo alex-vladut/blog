@@ -16,5 +16,12 @@
 				}
 			}
 		}
+	},
+	"function": {
+		"ContactUs": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda"
+		}
 	}
 }
