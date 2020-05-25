@@ -1,4 +1,6 @@
 import React from 'react';
+import Amplify from '@aws-amplify/core';
+import config from '../aws-exports';
 
 import { Layout } from '../components/layout';
 import {
@@ -8,6 +10,8 @@ import {
   Projects,
   Certifications,
 } from '../components/home';
+
+Amplify.configure(config);
 
 const Home = () => (
   <Layout>
