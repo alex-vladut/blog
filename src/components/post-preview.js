@@ -13,6 +13,7 @@ export const PostPreview = ({ post }) => (
       padding: 1em;
       background-color: #2222;
       box-shadow: 0px 1px 15px 1px var(--color-1);
+      border-radius: 0.5em;
       :last-of-type {
         margin-bottom: 2rem;
       }
