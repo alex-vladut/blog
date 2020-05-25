@@ -1,0 +1,42 @@
+---
+slug: 'user-pools-or-federated-identity-pools'
+date: '2018-11-21'
+title: 'Hard Choice: User Pools or Federated Identity Pools?'
+author: 'Alex Vladut'
+description: 'Hard Choice: User Pools or Federated Identity Pools?'
+image: images/javier-allegue-barros-choices.jpg
+---
+
+Having a goal to learn some cool new technologies, I am currently building a simple application and my focus at the moment is on implementing authentication capabilities. In order to do that I turned my attention towards AWS solutions for authentication and authorisation whose main service in that area is AWS Cognito. For those of you who are not familiar with the services provided by AWS, Cognito consists primarily of two types of resources: `User Pools` and `Federated Identity Pools`. Here is how AWS defines those services:
+
+![AWS Cognito documentation](/images/aws-cognito-docs.png)
+<center>https://aws.amazon.com/cognito/getting-started/</center>
+
+In summary, User Pools deal with users and give you out-of-the-box functionalities like sign-up, sign-in, reset password etc. In addition to the traditional sign-in process using a username/password pair, User Pools also supports federated identity through social identity providers. On the other hand, Federated Identities give you a way to access resources inside AWS. Think about accessing a specific file stored in S3, for example. All it does is to link an identity to an IAM role giving permissions to access AWS services. Federated Identities integrate with social media identity providers like Google or Facebook, but a User Pool could be an identity provider as well.
+
+**In the context of my application, now comes the question: should I use a User Pool or a Federated Identity Pool? Or a combination of both, which could for sure also be a valid choice?**
+
+My goal was to eliminate as much as possible the burden of dealing with usernames, passwords, email verification, password expiration and other things like that. As you can see there is a lot of stuff involved, and I wanted to avoid wasting any effort in that area. More than that, I was also planning to keep my application away from storing usernames, passwords or other sensitive information about a user. So my plan was to only allow users to authenticate through federation using some of the well known social identity providers. At the time there was no plan for directly accessing AWS resources, all the. authorisation logic being handled by the application itself. In short, all I was looking for was to give the users the option to sign up/sign in using their social media accounts and then link those identities to a user in my application.
+Looking at the requirements stated above, and especially taking into account that I don't need to give users direct access to AWS resources, the natural choice seems to be User Pools with federation enabled. As you might expect, let's see in the rest of the article why it doesn't actually seem to be the best choice.
+The first issue I encountered going with this approach was that a User Pool cannot be configured to only allow federated authentication and suppress the username/password option. As a result, if I wanted to still use User Pools I had to make a compromise and allow username/password type authentication, maybe in addition to my target federation authentication.
+Using User Pools implies a cost, in contrast to Federated Identities which are always free. For the first 50,000 "monthly active users" the service is free and after that the cost doesn't look very high either. I'm not really expecting that my. application will become so popular, but there doesn't seem to be a reason to even consider paying for a service when you are using only a very limited subset of its capabilities. I don't think Concierge User Pools are bad, on the contrary. It will have a huge performance impact to be able to configure with a single click advanced features like reset password, email verification, phone verification, Multi-Factor Authentication, One Time Password etc. It's just that it doesn't prove useful for my requirements.
+
+![AWS Cognito pricing](/images/aws-cognito-pricing.png)
+<center>https://aws.amazon.com/cognito/pricing/</center>
+
+Another issue was that CloudFormation doesn't support at the moment out-of-the-box enabling federated identity providers on User Pools. It's possible to configure this feature through custom resources, but it's still an impediment. On the other hand, configuring Federated Identity Pools in CloudFormation has a good support and everything I was looking for worked just fine. Having support to define such infrastructure resources as code is an important aspect for me as I wanted to keep track of all the changes I make and have an easy to replicate environment when needed.
+
+In order to explain some more arguments why I consider User Pools not the right tool for my problem, I'll jump also to how it could be used in addition to the internal capabilities described above. Amazon pushes towards using the Amplify library in order to deal with authorisation. AWS Amplify is available for multiple platforms, like Android or iOS, and even provides ready to use components for well known JavaScript frameworks/libraries (mentioned "libraries" as people will probably shout that React is not a framework) like Angular, React, Vue and even React Native. I didn't yet dive too deep into it, but at a first glance it looks like a great library. It's also nicely modularised so you can use only the parts you are interested in without having to import the whole library into your project. Also, Amplify integrates very well with AWS Cognito (as you might expect, as it's maintained by AWS) and AWS MobileHub.
+
+The problem I found when integrating with Cognito User Pools was that there is no way to set up federation on a User Pool in AWS Amplify. Federated authentication is supported very nicely in Amplify, but only when using Cognito Federated Identities, not User Pools. It's a bit strange that the same UI component can only point to two different resources in AWS, but I can understand why this works like this. Looking closely at AWS MobileHub you can see it provides some basic flows for implementing a serverless application, such as getting notifications or accessing a NoSQL database (DynamoDB in this case). So the primary goal of Amplify seems to be to provide federated identities direct access to AWS resources. This is what the sign in page looks like in Amplify when federation is enabled:
+
+![Default AWS Cognito signin page](/images/sign-in-page.png)
+
+The problem I found when integrating with Cognito User Pools was that there is no way to set up federation on a User Pool in AWS Amplify. Federated authentication is supported very nicely in Amplify, but only when using Cognito Federated Identities, not User Pools. It's a bit strange that the same UI component can only point to two different resources in AWS, but I can understand why this works like this. Looking closely at AWS MobileHub you can see it provides some basic flows for implementing a serverless application, such as getting notifications or accessing a NoSQL database (DynamoDB in this case). So the primary goal of Amplify seems to be to provide federated identities direct access to AWS resources. This is what the sign in page looks like in Amplify when federation is enabled:
+
+Unfortunately, it seems that even if I decide to go with the Federated Identity option, there is no way I could use Amplify UI components. This is because the sign in page always displays the username/password section and I couldn't find a way to only show the federation section.
+
+### Conclusions
+
+Cognito User Pools is a really great service and provides a lot of useful features like user sign up, sign in, email and phone verification, MFA, OTP, federation through social media providers and many other authentication security capabilities. But having in mind the goal to only allow authentication through known social media identity providers and getting rid of all the burden associated with managing usernames and passwords, it turned out that Cognito User Pools would be overkill.
+The other resource type provided by AWS Cognito service, Federated Identity Pools, has a single and simple purpose only: give federated identities a way to access private resources inside AWS. Even though I'm not looking specifically for this use case, making use of Federated Identity Pools seems to be a better option for my use case.
